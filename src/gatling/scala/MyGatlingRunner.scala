@@ -1,7 +1,7 @@
 import io.gatling.app.Gatling
 import io.gatling.core.config.GatlingPropertiesBuilder
 import simulation.CsvFeeder
-import simulations.{AddPauseTime, CheckResponseBodyAndExtract, CheckResponseCode, CodeReuseWithObject}
+import simulations.{AddPauseTime, CheckResponseBodyAndExtract, CheckResponseCode, CodeReuseWithObject, CsvFeederToCustom}
 
 object MyGatlingRunner {
 
@@ -12,7 +12,8 @@ object MyGatlingRunner {
     //val simClass = classOf[CheckResponseCode].getName
     //val simClass = classOf[CheckResponseBodyAndExtract].getName
     //val simClass = classOf[CodeReuseWithObject].getName
-    val simClass = classOf[CsvFeeder].getName
+    //val simClass = classOf[CsvFeeder].getName
+    val simClass = classOf[CsvFeederToCustom].getName
 
     val props = new GatlingPropertiesBuilder
     props.simulationClass(simClass)
