@@ -1,6 +1,6 @@
 import io.gatling.app.Gatling
 import io.gatling.core.config.GatlingPropertiesBuilder
-import simulations.{AddPauseTime, CheckResponseCode}
+import simulations.{AddPauseTime, CheckResponseBodyAndExtract, CheckResponseCode}
 
 object MyGatlingRunner {
 
@@ -8,7 +8,8 @@ object MyGatlingRunner {
 
     //val simClass = classOf[MyFirstTest].getName
     //val simClass = classOf[AddPauseTime].getName
-    val simClass = classOf[CheckResponseCode].getName
+    //val simClass = classOf[CheckResponseCode].getName
+    val simClass = classOf[CheckResponseBodyAndExtract].getName
 
     val props = new GatlingPropertiesBuilder
     props.simulationClass(simClass)
