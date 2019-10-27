@@ -8,8 +8,16 @@ class CheckResponseBodyAndExtract extends BaseSimulation {
 
   val scn = scenario("Video Game DB")
     .exec(http("Get Specific Game")
-    .get("videogames/1")
-    .check(jsonPath("$.name").is("Resident Evil 4")))
+      .get("videogames/1")
+      .check(jsonPath("$.name").is("Resident Evil 4")))
+
+    .exec(http("Get all Video games - 2nd call")
+      .get("videogames")
+      .check(jsonPath("$[1].id").saveAs("gameId")))
+
+    .exec(http("get Specific Game - 2nd call with Parameter")
+      .get("videogames/${gameId}")
+      .check(jsonPath("$.name").is("Gran Turismo 3")))
 
   setUp(scn.inject(atOnceUsers(1))).protocols(httpConf)
 
